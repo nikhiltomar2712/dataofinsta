@@ -1,0 +1,102 @@
+:root{
+  --bg:#0b1220;
+  --card:#0f1b32;
+  --card2:#0d1730;
+  --text:#e8eefc;
+  --muted:#a9b5d6;
+  --primary:#5eead4;
+  --primary2:#2dd4bf;
+  --danger:#fb7185;
+  --warn:#fbbf24;
+  --ok:#34d399;
+  --border:rgba(255,255,255,.10);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius:16px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1000px 600px at 20% -10%, rgba(94,234,212,.20), transparent 60%),
+              radial-gradient(800px 500px at 90% 0%, rgba(56,189,248,.18), transparent 50%),
+              var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+.container{max-width:980px;margin:0 auto;padding:24px}
+.topbar{
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:rgba(11,18,32,.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index:10;
+}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand h1{margin:0;font-size:22px}
+.subtitle{margin:4px 0 0;color:var(--muted);font-size:13px}
+.link{color:var(--primary);text-decoration:none;font-weight:600;font-size:14px}
+.link:hover{text-decoration:underline}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:22px;
+}
+.card + .card{margin-top:18px}
+.card h2{margin:0 0 10px;font-size:20px}
+.muted{color:var(--muted)}
+.fineprint{color:var(--muted);font-size:12px;margin-top:12px}
+.q{display:block;margin:14px 0}
+.q span{display:block;font-weight:650;margin-bottom:8px}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:rgba(0,0,0,.14)}
+.choice input{accent-color:var(--primary)}
+.actions{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+button{
+  border-radius: 12px;
+  padding: 11px 14px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  font-weight:700;
+  cursor:pointer;
+}
+button.primary{border-color: rgba(94,234,212,.35); background: linear-gradient(180deg, rgba(94,234,212,.22), rgba(94,234,212,.10));}
+button.primary:hover{background: linear-gradient(180deg, rgba(94,234,212,.30), rgba(94,234,212,.12));}
+button.secondary{color: var(--muted)}
+button.secondary:hover{color: var(--text); border-color: rgba(255,255,255,.18)}
+fieldset{border:0;padding:0;margin:0 0 16px}
+legend{font-weight:800;color:var(--primary);font-size:14px;margin-bottom:6px}
+.report .reportBody{margin-top:14px}
+.hero{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}
+.label{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.riskLabel{
+  font-size:22px;font-weight:900;
+}
+.score{font-size:22px;font-weight:900;font-family: var(--mono)}
+.list{margin:8px 0 0; padding-left:18px}
+.actionsList{display:grid;gap:10px;margin-top:10px}
+.actionItem{border:1px solid var(--border);border-radius:14px;padding:12px;background:rgba(0,0,0,.14)}
+.actionItem .title{font-weight:850;display:flex;align-items:center;gap:10px}
+.badge{
+  font-size:12px; font-weight:900; padding:4px 8px; border-radius:999px;
+  border:1px solid var(--border);
+}
+.badge.ok{color: rgba(52,211,153,.95); border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.10)}
+.badge.warn{color: rgba(251,191,36,.95); border-color: rgba(251,191,36,.35); background: rgba(251,191,36,.10)}
+.badge.danger{color: rgba(251,113,133,.98); border-color: rgba(251,113,133,.35); background: rgba(251,113,133,.10)}
+.prose{white-space:pre-wrap}
+.divider{height:1px;background:var(--border);margin:18px 0}
+.footer{margin:18px 0 42px}
+.footer h3{margin:0 0 8px}
+@media print{
+  .topbar,.footer,button,.link{display:none !important}
+  body{background:#fff;color:#111}
+  .card{box-shadow:none;border:1px solid #ddd;background:#fff}
+  .muted{color:#444}
+  .container{padding:16px}
+}
+
