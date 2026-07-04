@@ -1,0 +1,34 @@
+# Instagram Account Risks Checklist (Self-Audit)
+
+## Identity & privacy exposure
+- [ ] Bio contains phone number, full address, personal email, or unique identifiers
+- [ ] Public links reveal other identities/accounts
+- [ ] Location sharing is enabled too broadly (stories/posts)
+- [ ] Highlights/recent posts reveal consistent routines (home/work)
+
+## Account security controls
+- [ ] Two-factor authentication (2FA) is enabled
+- [ ] 2FA method is strong (authenticator app/security key > SMS)
+- [ ] Password is unique and strong (not reused)
+- [ ] Email recovery account is secured (strong password + 2FA)
+- [ ] Login alerts are enabled
+
+## Session & app hygiene
+- [ ] Active sessions/devices reviewed and suspicious ones removed
+- [ ] Old connected apps removed
+- [ ] No unknown apps with account permissions
+
+## Social engineering defenses
+- [ ] Suspicious DMs are treated as scams until verified
+- [ ] You don’t click “security verification” links
+- [ ] You can recognize impersonation attempts
+
+## Reporting readiness
+- [ ] You have a plan for impersonation (preserve evidence, report fast)
+- [ ] Friends/contacts know not to trust urgent requests from your account
+
+---
+
+## Notes
+Add observations from your own review here:
+

@@ -1,0 +1,18 @@
+# Input Guidelines
+
+## Allowed inputs (examples)
+- Instagram username (for your own self-audit)
+- Public profile fields you voluntarily share (bio text, links) 
+- Your own notes about what you see on your profile
+- Screenshots you took yourself, with personal identifiers/redactions applied
+
+## Disallowed inputs
+- Passwords, backup codes, cookies, session IDs, access tokens
+- Private messages, private account data, or data you obtained without permission
+- Doxxing content (full legal name, phone number, home address) unless it is removed/redacted
+
+## Data handling rules
+- Keep everything private: don’t upload sensitive details to public issues
+- Use redaction-by-default
+- Delete sensitive files after analysis if possible
+

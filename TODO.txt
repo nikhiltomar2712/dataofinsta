@@ -1,0 +1,9 @@
+# TODO - DataOfInsta
+
+- [ ] Add/verify additional documentation files (SECURITY, THREAT_MODEL, ETHICS, templates)
+- [ ] Provide a concrete tool workflow (CLI or web) OR keep it as a documentation-only repo
+- [ ] Add a sample report with redacted/example data
+- [ ] Add a clear “How to use” section for input data and expected outputs
+- [ ] Add “privacy preserving defaults” (no scraping, no credentials, no secrets)
+- [ ] Add tests/linting if code is introduced later
+

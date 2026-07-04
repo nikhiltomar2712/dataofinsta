@@ -1,0 +1,41 @@
+# Threat Model (DataOfInsta)
+
+## Assets
+- Your Instagram account integrity (credentials, sessions)
+- Personal data you expose via profile/content
+- Recovery mechanisms (email/phone)
+
+## Threat actors
+- Impersonators (catfishing)
+- Scammers/phishers
+- Credential-stuffing attackers
+- Session hijackers (malware or stolen cookies)
+- Malicious “analyzer” tools attempting data harvesting
+
+## Attack surfaces
+- Public profile fields (bio, links, highlights)
+- Visible content patterns (posting times/locations)
+- Connected apps / weak email security
+- Social engineering via DMs and login prompts
+- Any automated tool you run that could be harvesting secrets
+
+## Assumptions
+- Users are reviewing their own account or have explicit permission.
+- Analysis is consent-based and avoids unauthorized access.
+
+## Security goals
+- Prevent the repository/tool from collecting credentials or secrets
+- Provide guidance to reduce exposure and improve account hardening
+- Encourage responsible disclosure
+
+## Non-goals
+- Hacking Instagram
+- Unauthorized scraping
+- Bypassing access controls
+
+## Mitigations (design requirements)
+- Documentation-first (no credential access)
+- Privacy-preserving workflows
+- Redaction-by-default in any reporting templates
+- Clear ethics and scope statements
+
