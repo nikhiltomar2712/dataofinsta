@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SecureVault — Documentation</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🛡️</div>
+        <div>
+          <div class="title">SecureVault</div>
+          <div style="font-weight:650">Zero-knowledge password manager</div>
+        </div>
+      </div>
+      <div class="cta" style="margin:0">
+        <a class="btn" href="../index.html">Home</a>
+        <a class="btn primary" href="https://github.com/nikhiltomar2712/SecureVault" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </header>
+
+    <div class="section">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Security model</h2>
+          <ul>
+            <li><b>Zero-knowledge:</b> vault contents are encrypted client-side.</li>
+            <li><b>Key derivation:</b> Argon2id (memory-hard) via <span style="font-family:var(--mono)">argon2-cffi</span>.</li>
+            <li><b>Encryption:</b> AES-256-GCM (authenticated encryption) via <span style="font-family:var(--mono)">cryptography</span>.</li>
+            <li><b>HIBP breach checks:</b> only SHA-1 prefixes are transmitted (k-anonymity).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Planned vault format</h2>
+          <div class="small">Single encrypted file for portability:</div>
+          <div class="code">vault.enc
+
+(Encrypted blob)
+- salt
+- Argon2id params
+- AES-GCM nonce
+- ciphertext
+- authentication tag
+</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="card">
+          <h2>CLI command reference</h2>
+          <div class="code">securevault init
+securevault unlock
+securevault add
+securevault list [--search TERM]
+securevault get <title or id>
+securevault generate
+securevault check-breach
+securevault export
+securevault import
+securevault lock</div>
+          <p class="small">This docs page describes the intended interface.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2026 SecureVault</footer>
+  </div>
+</body>
+</html>
+

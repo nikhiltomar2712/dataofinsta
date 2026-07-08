@@ -3,226 +3,225 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DataOfInsta — Instagram Privacy Self-Audit</title>
+  <title>SecureVault — Zero-Knowledge Password Manager</title>
+  <meta name="description" content="SecureVault: zero-knowledge encryption + breach checking (HIBP k-anonymity)." />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Minimal inline overrides removed; keep styling in styles.css */
+
+
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#e8ecff;
+      --muted:#aab3d6;
+      --accent:#7c5cff;
+      --accent2:#00d4ff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.35), transparent 55%),
+                  radial-gradient(900px 500px at 85% 20%, rgba(0,212,255,.22), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1050px;margin:0 auto;padding:28px 18px 72px}
+    header{
+      display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      padding:14px 14px;
+      border:1px solid var(--border);
+      background:rgba(18,26,51,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(0,212,255,1));
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .logo svg{filter: drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+    .title{margin:0;font-size:16px;letter-spacing:.3px;color:var(--muted)}
+    h1{
+      font-size:42px;line-height:1.05;margin:18px 0 10px;
+      letter-spacing:-.02em;
+    }
+    .subtitle{color:var(--muted);max-width:70ch}
+
+    .grid{display:grid;grid-template-columns: repeat(12, 1fr);gap:14px;margin-top:18px}
+    .hero{grid-column: span 12}
+    .cards{grid-column: span 12}
+    @media (min-width: 900px){
+      .hero{grid-column: span 7}
+      .cards{grid-column: span 5}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: rgba(18,26,51,.55);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .cta{
+      display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px);background: rgba(255,255,255,.10);border-color: rgba(255,255,255,.28)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,212,255,.75));
+      border-color: rgba(255,255,255,.22);
+    }
+    .pill{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 5px rgba(0,212,255,.12)}
+
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    li{margin:8px 0}
+
+    .section{margin-top:16px}
+    .section h2{margin:0 0 8px;font-size:20px}
+    .code{
+      font-family:var(--mono);
+      font-size:13px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      padding:12px;
+      border-radius:14px;
+      color:#dbe3ff;
+      overflow:auto;
+      white-space:pre;
+    }
+
+    footer{
+      margin-top:24px;color:var(--muted);font-size:13px;text-align:center;
+    }
+    .kcard{display:grid;gap:12px}
+    .k{display:flex;gap:12px;align-items:flex-start}
+    .k .icon{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      flex:0 0 auto;
+    }
+    .k b{display:block;margin-bottom:3px}
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container">
+  <div class="wrap">
+    <header>
       <div class="brand">
-        <h1>DataOfInsta</h1>
-        <p class="subtitle">Instagram privacy self-audit • runs fully in your browser</p>
+        <div class="logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L20 6V12C20 17 16.5 21 12 22C7.5 21 4 17 4 12V6L12 2Z" stroke="white" stroke-width="1.8" opacity=".95"/>
+            <path d="M9.2 12.2C9.2 10.6 10.5 9.3 12.1 9.3C13.7 9.3 15 10.6 15 12.2C15 13.2 14.5 14 13.7 14.5V16.4H10.5V14.5C9.7 14 9.2 13.2 9.2 12.2Z" fill="white" opacity=".9"/>
+          </svg>
+        </div>
+        <div>
+          <div class="title">SecureVault</div>
+          <div style="font-weight:650">Zero-knowledge password manager</div>
+        </div>
       </div>
-      <a class="link" href="#report">Jump to report</a>
+      <div class="cta" style="margin:0">
+        <a class="btn primary" href="https://github.com/nikhiltomar2712/SecureVault" target="_blank" rel="noreferrer">
+          <span aria-hidden="true">↗</span> GitHub
+        </a>
+        <a class="btn" href="#features">
+          <span aria-hidden="true">⚡</span> Features
+        </a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="hero">
+        <h1>Keep passwords encrypted—even from yourself.</h1>
+        <p class="subtitle">SecureVault encrypts your vault with strong, modern cryptography. The master password never gets stored; everything is encrypted client-side.</p>
+        <div class="pill"><span class="dot"></span><span style="color:var(--muted)">Breach checking via HIBP k-anonymity (SHA-1 prefix only)</span></div>
+
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/nikhiltomar2712/SecureVault" target="_blank" rel="noreferrer">View the code</a>
+          <a class="btn" href="#crypto">How it works</a>
+          <a class="btn" href="#commands">CLI commands</a>
+        </div>
+
+        <div class="section" id="features">
+          <div class="card">
+            <h2 style="margin-top:0">Built for safety and usability</h2>
+            <ul>
+              <li><b>Argon2id</b> key derivation</li>
+              <li><b>AES-256-GCM</b> authenticated encryption</li>
+              <li><b>AES-GCM vault file</b> (single encrypted vault: <code style="font-family:var(--mono)">vault.enc</code>)</li>
+              <li><b>Typer + Rich CLI</b> with search, generator, breach check, export/import, and auto-lock</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card kcard" id="crypto">
+          <div class="k">
+            <div class="icon" aria-hidden="true">🔐</div>
+            <div><b>Zero-knowledge encryption</b><div style="color:var(--muted)">Master password is never stored. Vault contents are encrypted before writing to disk.</div></div>
+          </div>
+          <div class="k">
+            <div class="icon" aria-hidden="true">🧠</div>
+            <div><b>Breach checking</b><div style="color:var(--muted)">HIBP k-anonymity: send only SHA-1 prefixes; compare counts locally.</div></div>
+          </div>
+          <div class="k">
+            <div class="icon" aria-hidden="true">🧪</div>
+            <div><b>Strength scoring</b><div style="color:var(--muted)">Password strength evaluation using <span style="font-family:var(--mono)">zxcvbn</span>.</div></div>
+          </div>
+          <div class="k">
+            <div class="icon" aria-hidden="true">🗄️</div>
+            <div><b>Export/Import</b><div style="color:var(--muted)">Move encrypted data via JSON without breaking zero-knowledge guarantees.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
-    <section id="quiz" class="card">
-      <h2>Self-audit questionnaire</h2>
-      <p class="muted">
-        This tool is for <strong>reviewing your own account</strong>. It does <strong>not</strong> scrape Instagram, does not call any external APIs, and never asks you for passwords or tokens.
-      </p>
-
-      <form id="auditForm" autocomplete="off">
-        <fieldset>
-          <legend>About your account exposure (visibility signals)</legend>
-
-          <label class="q">
-            <span>1) Is your Instagram account <strong>public</strong>?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q1" value="3" required /> Yes, public</label>
-              <label class="choice"><input type="radio" name="q1" value="1" /> Mostly private / restricted</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>2) Does your bio contain personal identifiers (full name, phone, email, home address)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q2" value="3" required /> Yes (one or more)</label>
-              <label class="choice"><input type="radio" name="q2" value="1" /> No / mostly generic</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>3) Do you include links that tie your identity together (portfolio, study/work profile, other accounts)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q3" value="2" required /> Yes, multiple links / strong ties</label>
-              <label class="choice"><input type="radio" name="q3" value="1" /> Few links / weak ties</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>4) Do you share location broadly (e.g., frequent location tags / broad story audience)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q4" value="3" required /> Yes, broadly</label>
-              <label class="choice"><input type="radio" name="q4" value="1" /> Rarely / only close contacts</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>5) Do highlights or repeated content reveal routines (home/work/schedule patterns)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q5" value="3" required /> Often / very consistent</label>
-              <label class="choice"><input type="radio" name="q5" value="1" /> Not really / varied</label>
-            </div>
-          </label>
-        </fieldset>
-
-        <fieldset>
-          <legend>Account security posture (credential & recovery defenses)</legend>
-
-          <label class="q">
-            <span>6) Is 2FA enabled?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q6" value="3" required /> No</label>
-              <label class="choice"><input type="radio" name="q6" value="1" /> Yes (enabled)</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>7) If 2FA is enabled, is it a strong method (authenticator app or security key) rather than SMS?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q7" value="2" required /> Not sure / SMS / weaker</label>
-              <label class="choice"><input type="radio" name="q7" value="1" /> Strong method</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>8) Do you use a unique password for Instagram (not reused elsewhere)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q8" value="3" required /> No / reused</label>
-              <label class="choice"><input type="radio" name="q8" value="1" /> Yes / unique</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>9) Is your email recovery account well secured (strong password + 2FA)?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q9" value="3" required /> Unsure / not secured</label>
-              <label class="choice"><input type="radio" name="q9" value="1" /> Yes, secured</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>10) Are login alerts / suspicious-login notifications enabled?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q10" value="3" required /> No / rarely</label>
-              <label class="choice"><input type="radio" name="q10" value="1" /> Yes</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>11) Have you reviewed your active sessions / logged-in devices recently?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q11" value="2" required /> No / long ago</label>
-              <label class="choice"><input type="radio" name="q11" value="1" /> Yes, recently</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>12) Have you removed old/unused apps connected to your account?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q12" value="2" required /> Not sure / many old apps</label>
-              <label class="choice"><input type="radio" name="q12" value="1" /> Yes, cleaned up</label>
-            </div>
-          </label>
-        </fieldset>
-
-        <fieldset>
-          <legend>Social engineering & behavioral risk</legend>
-
-          <label class="q">
-            <span>13) Have you received phishing-like DMs or “Instagram security verification” messages recently?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q13" value="3" required /> Yes, and I engaged at least once (link/click or close call)</label>
-              <label class="choice"><input type="radio" name="q13" value="2" /> Yes, but I ignored / reported</label>
-              <label class="choice"><input type="radio" name="q13" value="1" /> No / rarely</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>14) Are you cautious with external “viewer” apps, link shorteners, and DM links?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q14" value="2" required /> Sometimes click / share suspicious links</label>
-              <label class="choice"><input type="radio" name="q14" value="1" /> Generally cautious</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>15) If your account were impersonated, would you know how to preserve evidence and report quickly?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q15" value="1" required /> Yes, I have a plan</label>
-              <label class="choice"><input type="radio" name="q15" value="3" /> Not really / no plan</label>
-            </div>
-          </label>
-
-          <label class="q">
-            <span>16) Do you proactively teach trusted contacts to ignore urgent requests from your account?</span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="q16" value="1" required /> Yes</label>
-              <label class="choice"><input type="radio" name="q16" value="2" /> Somewhat</label>
-              <label class="choice"><input type="radio" name="q16" value="3" /> No</label>
-            </div>
-          </label>
-        </fieldset>
-
-        <div class="actions">
-          <button class="primary" type="submit">Generate my self-audit report</button>
-          <button class="secondary" type="button" id="resetBtn">Reset</button>
-        </div>
-
-        <p class="fineprint">
-          Tip: you can keep responses generic. Do not paste secret values.
-        </p>
-      </form>
-    </section>
-
-    <section id="report" class="card report" aria-live="polite">
-      <h2>Your report</h2>
-      <p class="muted">Results appear after you submit the questionnaire.</p>
-
-      <div id="reportBody" class="reportBody" hidden>
-        <div class="hero">
-          <div>
-            <div class="label">Risk level</div>
-            <div id="riskLabel" class="riskLabel">—</div>
-          </div>
-          <div>
-            <div class="label">Security score</div>
-            <div id="securityScore" class="score">—</div>
-          </div>
-        </div>
-
-        <h3>Exposure Estimate</h3>
-        <div id="exposureText" class="prose">—</div>
-
-        <h3>Threats Considered (self-audit framing)</h3>
-        <ul id="threatsList" class="list"></ul>
-
-        <h3>Prioritized action checklist</h3>
-        <div id="actionsList" class="actionsList"></div>
-
-        <div class="divider"></div>
-
-        <p class="muted" id="downloadHint">You can download the report as a text file.</p>
-        <div class="actions">
-          <button class="primary" type="button" id="downloadBtn">Download report</button>
-          <button class="secondary" type="button" id="printBtn">Print to PDF</button>
-        </div>
+    <div class="section" id="commands">
+      <div class="card">
+        <h2>CLI commands (Typer + Rich)</h2>
+        <div class="code">securevault init
+securevault unlock
+securevault add
+securevault list [--search TERM]
+securevault get <title or id>
+securevault generate
+securevault check-breach
+securevault export
+securevault import
+securevault lock</div>
+        <p style="margin:12px 0 0;color:var(--muted)">This page is a GitHub Pages-style landing site for the SecureVault project.</p>
       </div>
-    </section>
+    </div>
 
-    <footer class="footer">
-      <h3>Ethics & scope</h3>
-      <p>
-        DataOfInsta is a <strong>self-audit / privacy-risk questionnaire</strong>. It does not scrape Instagram, does not automate fetching data, and does not attempt access to accounts.
-        Use it to review <strong>your own</strong> exposure and improve security practices.
-      </p>
+    <footer>
+      <div>© 2026 SecureVault • <a href="https://github.com/nikhiltomar2712/SecureVault" target="_blank" rel="noreferrer">GitHub</a></div>
     </footer>
-  </main>
-
-  <script src="app.js"></script>
+  </div>
 </body>
 </html>
 

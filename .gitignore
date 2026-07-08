@@ -1,0 +1,17 @@
+# Encrypted vault
+vault.enc
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Env files
+*.env
+
+# Node / build artifacts (if any)
+dist/
+build/
+
